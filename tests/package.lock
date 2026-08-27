@@ -1,0 +1,6 @@
+sdk: ^2.0.0-alpha.198
+prefixes:
+  bq32000: toit-bq32000
+packages:
+  toit-bq32000:
+    path: ..

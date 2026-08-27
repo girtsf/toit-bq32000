@@ -1,0 +1,4 @@
+name: bq32000
+description: Driver for the Texas Instruments BQ32000 I2C real-time clock.
+environment:
+  sdk: ^2.0.0-alpha.198

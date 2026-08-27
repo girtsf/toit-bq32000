@@ -1,0 +1,3 @@
+dependencies:
+  bq32000:
+    path: ..

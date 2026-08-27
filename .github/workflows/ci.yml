@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract the minimum SDK version
+        shell: bash
+        run: |
+          SDK_VERSION=$(sed -n 's/^ *sdk: *[\^~]*\(.*\)$/\1/p' package.yaml)
+          echo "TOIT_VERSION=v$SDK_VERSION" >> $GITHUB_ENV
+
+      - uses: toitlang/action-setup@v1
+        with:
+          toit-version: ${{ env.TOIT_VERSION }}
+
+      - name: Run tests
+        run: make test

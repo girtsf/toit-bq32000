@@ -1,0 +1,14 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: toitlang/action-publish@v1
+        with:
+          version: ${{ github.ref_name }}
