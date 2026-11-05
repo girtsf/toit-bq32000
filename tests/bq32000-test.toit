@@ -339,16 +339,19 @@ test-trickle-charger:
 
   rtc.configure-trickle-charger --enabled
   expect rtc.trickle-charger-enabled
+  expect-not rtc.trickle-charger-bypass-diode
   // The reserved bits keep their power-on values.
   expect-equals 0xb0 chip.memory[TCH2]
   expect-equals 0xa5 chip.memory[CFG2]
 
   rtc.configure-trickle-charger --enabled --bypass-diode
   expect rtc.trickle-charger-enabled
+  expect rtc.trickle-charger-bypass-diode
   expect-equals 0xe5 chip.memory[CFG2]
 
   rtc.configure-trickle-charger --no-enabled
   expect-not rtc.trickle-charger-enabled
+  expect-not rtc.trickle-charger-bypass-diode
   expect-equals 0x90 chip.memory[TCH2]
   expect-equals 0xaa chip.memory[CFG2]
 

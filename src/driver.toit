@@ -389,6 +389,14 @@ class Driver:
     return ((registers_.read-u8 reg.CFG2) & reg.CFG2-TCHE) == reg.CFG2-TCHE-ON
 
   /**
+  Whether the trickle charger's series diode is bypassed.
+
+  Only meaningful while $trickle-charger-enabled.
+  */
+  trickle-charger-bypass-diode -> bool:
+    return ((registers_.read-u8 reg.CFG2) & reg.CFG2-TCFE) != 0
+
+  /**
   Reads the seven clock registers.
 
   The chip does not latch them for the duration of a read, so the read is
