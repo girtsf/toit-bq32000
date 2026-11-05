@@ -1,4 +1,5 @@
-TOIT ?= toit
+# Uses the plain `toit` executable if available, falling back to `jag toit`.
+TOIT ?= $(shell command -v toit > /dev/null && echo toit || echo jag toit)
 TESTS := $(wildcard tests/*-test.toit)
 
 all: test
